@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./App.css";
-import { Button } from "./components/ui/button";
 import {
   Card,
   CardContent,
@@ -9,12 +8,18 @@ import {
   CardHeader,
   CardTitle,
 } from "./components/ui/card";
+import { api } from "@/lib/api";
 
 function App() {
   const [totalSpent, setTotalSpent] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/expenses/total");
+    async function fetchTotal() {
+      const res = await api.expenses["total"].$get();
+      const data = await res.json();
+      setTotalSpent(data.total);
+    }
+    fetchTotal();
   }, []);
 
   return (
