@@ -1,3 +1,4 @@
+import type { InferSelectModel } from "drizzle-orm";
 import { pgTable, serial, timestamp, varchar } from "drizzle-orm/pg-core";
 
 export const todos = pgTable("todos", {
@@ -6,3 +7,5 @@ export const todos = pgTable("todos", {
   description: varchar("description").notNull(),
   createdAt: timestamp("created_at").notNull().defaultNow(),
 });
+
+export type Todo = InferSelectModel<typeof todos>;

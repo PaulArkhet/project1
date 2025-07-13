@@ -22,6 +22,7 @@ app.get("/*", async (c) => {
   }
 });
 
+export type ApiRoutes = typeof apiRoutes;
 export default app;
 
 const PORT = parseInt(process.env.PORT!) || 3333;
