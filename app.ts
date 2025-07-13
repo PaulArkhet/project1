@@ -3,11 +3,14 @@ import { Hono } from "hono";
 import { cors } from "hono/cors";
 import { logger } from "hono/logger";
 import { serveStatic } from "hono/bun";
+import { todosRouter } from "./routes/todos";
 
 const app = new Hono();
 
 app.use("*", logger());
 app.use("*", cors());
+
+const apiRoutes = app.basePath("/api/v0").route("/todos", todosRouter);
 
 app.use("/*", serveStatic({ root: "./frontend/dist" }));
 app.get("/*", async (c) => {

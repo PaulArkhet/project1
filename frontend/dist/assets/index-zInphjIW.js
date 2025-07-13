@@ -1,0 +1,1 @@
+import{j as o,L as n}from"./index-LSKKdaP5.js";const i=function(){return o.jsxs("div",{children:['Hello "/"!',o.jsx("div",{children:o.jsx(n,{to:"/about",children:"About"})})]})};export{i as component};
